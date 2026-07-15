@@ -5,230 +5,1060 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tawfiq Oubaya – Portfolio</title>
   <meta name="description" content="Portfolio de Tawfiq Oubaya, étudiant en BUT 2 Informatique." />
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
-
-  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
 
-  <link rel="stylesheet" href="style.css" />
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+:root {
+  --teal:       #0f6e56;
+  --teal-light: #1a9070;
+  --teal-glow:  rgba(15,110,86,0.3);
+  --dark:       #0a0f1a;
+  --dark-2:     #0f1824;
+  --dark-3:     #141f2e;
+  --mid:        #1a2a3d;
+  --mid-2:      #1e3248;
+  --text:       #e8f4f0;
+  --text-2:     #b0cec4;
+  --muted:      #6a9585;
+  --border:     rgba(15,110,86,0.2);
+  --border-2:   rgba(255,255,255,0.06);
+  --radius:     12px;
+  --ff-head:    'Space Grotesk', sans-serif;
+  --ff-body:    'Inter', sans-serif;
+  --shadow:     0 8px 32px rgba(0,0,0,0.4);
+  --shadow-teal: 0 4px 24px rgba(15,110,86,0.25);
+}
+
+body {
+  font-family: var(--ff-body);
+  background: var(--dark);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ═══════════════════════════════════
+   SCROLLBAR
+═══════════════════════════════════ */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--dark); }
+::-webkit-scrollbar-thumb { background: var(--teal); border-radius: 2px; }
+
+/* ═══════════════════════════════════
+   NAV
+═══════════════════════════════════ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 6%;
+  height: 68px;
+  background: rgba(10,15,26,0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: all 0.3s ease;
+}
+
+.nav-logo {
+  font-family: var(--ff-head);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--teal-light);
+  text-decoration: none;
+  letter-spacing: -0.5px;
+}
+
+.nav-logo span { color: var(--text); }
+
+.nav-links {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--text-2);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: color 0.2s;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 1px;
+  background: var(--teal-light);
+  transition: width 0.3s;
+}
+
+.nav-links a:hover { color: var(--text); }
+.nav-links a:hover::after { width: 100%; }
+
+.nav-cta {
+  background: var(--teal) !important;
+  color: #fff !important;
+  padding: 9px 20px;
+  border-radius: 8px;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+  transition: background 0.2s, box-shadow 0.2s !important;
+}
+.nav-cta::after { display: none !important; }
+.nav-cta:hover { background: var(--teal-light) !important; box-shadow: var(--shadow-teal) !important; }
+
+/* ═══════════════════════════════════
+   HERO
+═══════════════════════════════════ */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 120px 6% 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Grille de points en fond */
+#hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(15,110,86,0.15) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+/* Dégradé radial */
+#hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 80% 40%, rgba(15,110,86,0.12) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 50% at 10% 90%, rgba(15,110,86,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 100% 100% at 50% 50%, transparent 60%, var(--dark) 100%);
+  pointer-events: none;
+}
+
+.hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 80px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(15,110,86,0.12);
+  border: 1px solid rgba(15,110,86,0.3);
+  border-radius: 30px;
+  padding: 7px 16px;
+  font-size: 13px;
+  color: var(--teal-light);
+  font-weight: 500;
+  margin-bottom: 28px;
+}
+
+.hero-tag .pulse {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #2dcc8f;
+  box-shadow: 0 0 6px #2dcc8f;
+  animation: blink 2s infinite;
+}
+
+@keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+
+.hero-name {
+  font-family: var(--ff-head);
+  font-size: clamp(48px, 6.5vw, 80px);
+  font-weight: 700;
+  line-height: 1.0;
+  color: var(--text);
+  margin-bottom: 8px;
+  letter-spacing: -2px;
+}
+
+.hero-name .highlight {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--teal-light);
+}
+
+.hero-role {
+  font-family: var(--ff-head);
+  font-size: clamp(18px, 2.5vw, 26px);
+  font-weight: 500;
+  color: var(--teal-light);
+  margin-bottom: 20px;
+  letter-spacing: -0.5px;
+}
+
+.hero-desc {
+  font-size: 16px;
+  color: var(--text-2);
+  max-width: 500px;
+  line-height: 1.75;
+  margin-bottom: 40px;
+}
+
+.hero-btns {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+
+.btn-main {
+  background: var(--teal);
+  color: #fff;
+  padding: 14px 32px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+.btn-main:hover { background: var(--teal-light); transform: translateY(-2px); box-shadow: var(--shadow-teal); }
+
+.btn-outline {
+  border: 1px solid var(--border-2);
+  background: rgba(255,255,255,0.03);
+  color: var(--text-2);
+  padding: 14px 32px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: border-color 0.2s, color 0.2s, transform 0.15s;
+}
+.btn-outline:hover { border-color: var(--teal); color: var(--text); transform: translateY(-2px); }
+
+.hero-socials {
+  display: flex;
+  gap: 12px;
+}
+
+.hero-socials a {
+  width: 42px; height: 42px;
+  border-radius: 10px;
+  border: 1px solid var(--border-2);
+  background: rgba(255,255,255,0.03);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 17px;
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s, background 0.2s, transform 0.15s;
+}
+.hero-socials a:hover {
+  border-color: var(--teal);
+  color: var(--teal-light);
+  background: rgba(15,110,86,0.08);
+  transform: translateY(-2px);
+}
+
+/* Avatar hero */
+.hero-avatar-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-avatar-wrap::before {
+  content: '';
+  position: absolute;
+  inset: -20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(15,110,86,0.15) 0%, transparent 70%);
+}
+
+.hero-avatar {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: var(--dark-3);
+  border: 2px solid rgba(15,110,86,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--ff-head);
+  font-size: 80px;
+  font-weight: 700;
+  color: var(--teal-light);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 60px rgba(15,110,86,0.15), var(--shadow);
+}
+
+.hero-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Badges flottants */
+.float-badge {
+  position: absolute;
+  background: var(--mid);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 8px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  box-shadow: var(--shadow);
+  white-space: nowrap;
+}
+
+.float-badge i { color: var(--teal-light); font-size: 14px; }
+.float-badge-1 { top: 30px; right: -20px; }
+.float-badge-2 { bottom: 50px; left: -30px; }
+.float-badge-3 { bottom: -10px; right: 10px; }
+
+/* ═══════════════════════════════════
+   SECTIONS COMMUNES
+═══════════════════════════════════ */
+section { padding: 100px 6%; }
+
+.section-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-header {
+  margin-bottom: 56px;
+}
+
+.section-eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--teal-light);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-eyebrow::before {
+  content: '';
+  width: 24px;
+  height: 2px;
+  background: var(--teal-light);
+  border-radius: 1px;
+  display: inline-block;
+}
+
+.section-title {
+  font-family: var(--ff-head);
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.15;
+  letter-spacing: -1px;
+}
+
+/* ═══════════════════════════════════
+   À PROPOS
+═══════════════════════════════════ */
+#about { background: var(--dark-2); }
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: start;
+}
+
+.about-text {
+  color: var(--text-2);
+  font-size: 16px;
+  line-height: 1.85;
+}
+.about-text p + p { margin-top: 18px; }
+.about-text strong { color: var(--text); font-weight: 600; }
+
+.about-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 36px;
+}
+
+.stat-card {
+  background: var(--mid);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.stat-card:hover { border-color: var(--teal); transform: translateY(-2px); }
+
+.stat-num {
+  font-family: var(--ff-head);
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--teal-light);
+  line-height: 1;
+}
+.stat-label { font-size: 13px; color: var(--muted); margin-top: 6px; }
+
+.about-right { display: flex; flex-direction: column; gap: 14px; }
+
+.info-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  background: var(--mid);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: border-color 0.2s;
+}
+.info-card:hover { border-color: rgba(15,110,86,0.4); }
+
+.info-icon {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  background: rgba(15,110,86,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--teal-light);
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+.info-label { font-size: 12px; color: var(--muted); }
+.info-value { font-size: 14px; color: var(--text); font-weight: 500; }
+
+.formation-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--teal-light);
+  margin-top: 8px;
+  margin-bottom: 10px;
+  padding-left: 4px;
+}
+
+.formation-item {
+  border-left: 2px solid var(--teal);
+  padding: 14px 18px;
+  background: var(--mid);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  transition: background 0.2s;
+}
+.formation-item:hover { background: var(--mid-2); }
+.fi-title { font-weight: 600; font-size: 14px; color: var(--text); }
+.fi-school { font-size: 13px; color: var(--teal-light); margin: 3px 0; }
+.fi-date { font-size: 12px; color: var(--muted); }
+.formation-list { display: flex; flex-direction: column; gap: 12px; }
+
+/* ═══════════════════════════════════
+   EXPÉRIENCE
+═══════════════════════════════════ */
+#experience { background: var(--dark); }
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 23px;
+  top: 12px;
+  bottom: 12px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--teal), rgba(15,110,86,0.08));
+  border-radius: 2px;
+}
+
+.timeline-item {
+  display: flex;
+  gap: 32px;
+  padding-bottom: 48px;
+  position: relative;
+}
+.timeline-item:last-child { padding-bottom: 0; }
+
+.t-dot {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  border: 2px solid rgba(15,110,86,0.4);
+  background: var(--dark-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 18px;
+  z-index: 1;
+  position: relative;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.timeline-item:hover .t-dot { border-color: var(--teal); box-shadow: 0 0 20px var(--teal-glow); }
+
+.t-dot.active {
+  border-color: var(--teal);
+  background: rgba(15,110,86,0.15);
+  box-shadow: 0 0 20px var(--teal-glow);
+}
+
+.t-card {
+  flex: 1;
+  background: var(--dark-3);
+  border: 1px solid var(--border-2);
+  border-radius: 16px;
+  padding: 26px 28px;
+  transition: border-color 0.25s, transform 0.2s, box-shadow 0.2s;
+}
+.t-card:hover { border-color: rgba(15,110,86,0.35); transform: translateX(4px); box-shadow: var(--shadow); }
+.timeline-item.active .t-card { border-color: rgba(15,110,86,0.4); }
+
+.t-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.t-title {
+  font-family: var(--ff-head);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.t-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(15,110,86,0.3);
+  background: rgba(15,110,86,0.1);
+  color: var(--teal-light);
+}
+
+.t-badge.live {
+  background: rgba(45,204,143,0.12);
+  border-color: rgba(45,204,143,0.35);
+  color: #2dcc8f;
+}
+
+.t-company { font-size: 14px; color: var(--teal-light); font-weight: 600; margin-bottom: 4px; }
+.t-date { font-size: 12px; color: var(--muted); margin-bottom: 18px; display: flex; align-items: center; gap: 6px; }
+
+.t-missions { display: flex; flex-direction: column; gap: 8px; }
+
+.t-mission {
+  display: flex;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.6;
+}
+
+.t-mission::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--teal-light);
+  flex-shrink: 0;
+  margin-top: 8px;
+}
+
+.t-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 18px;
+}
+
+.t-tag {
+  background: rgba(15,110,86,0.08);
+  border: 1px solid rgba(15,110,86,0.2);
+  color: var(--teal-light);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+/* ═══════════════════════════════════
+   PROJETS
+═══════════════════════════════════ */
+#projets { background: var(--dark-2); }
+
+.projets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.p-card {
+  background: var(--dark-3);
+  border: 1px solid var(--border-2);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+.p-card:hover { transform: translateY(-6px); border-color: rgba(15,110,86,0.4); box-shadow: var(--shadow), 0 0 30px rgba(15,110,86,0.1); }
+.p-card.featured { border-color: rgba(15,110,86,0.35); }
+
+.p-img {
+  height: 190px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 56px;
+  position: relative;
+  overflow: hidden;
+}
+
+.p-img.music { background: linear-gradient(135deg, #071520 0%, #092b1e 50%, #0a1a10 100%); }
+.p-img.data  { background: linear-gradient(135deg, #071520 0%, #091b2e 50%, #071830 100%); }
+.p-img.linux { background: linear-gradient(135deg, #111108 0%, #081c10 50%, #0a1a0a 100%); }
+
+.p-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 40%, rgba(0,0,0,0.5) 100%);
+}
+
+.p-img img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
+
+.p-badge {
+  position: absolute;
+  top: 14px; left: 14px;
+  background: rgba(15,110,86,0.9);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  z-index: 1;
+}
+
+.p-body { padding: 24px 26px 26px; }
+.p-type { font-size: 11px; color: var(--teal-light); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
+.p-title { font-family: var(--ff-head); font-size: 19px; font-weight: 700; color: var(--text); margin-bottom: 10px; }
+.p-desc { font-size: 14px; color: var(--text-2); line-height: 1.7; margin-bottom: 18px; }
+
+.p-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 22px; }
+.p-tag {
+  background: rgba(15,110,86,0.08);
+  border: 1px solid rgba(15,110,86,0.2);
+  color: var(--teal-light);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+.p-links { display: flex; gap: 10px; }
+
+.p-link {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--text-2);
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border-2);
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+.p-link:hover { color: var(--teal-light); border-color: rgba(15,110,86,0.4); background: rgba(15,110,86,0.06); }
+
+.p-link.main {
+  background: var(--teal);
+  color: #fff;
+  border-color: var(--teal);
+}
+.p-link.main:hover { background: var(--teal-light); border-color: var(--teal-light); color: #fff; }
+
+/* ═══════════════════════════════════
+   COMPÉTENCES
+═══════════════════════════════════ */
+#competences { background: var(--dark); }
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.skill-block {
+  background: var(--dark-3);
+  border: 1px solid var(--border-2);
+  border-radius: 16px;
+  padding: 24px 26px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.skill-block:hover { border-color: rgba(15,110,86,0.3); transform: translateY(-2px); }
+.skill-block.wide { grid-column: span 2; }
+
+.skill-block-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--ff-head);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 18px;
+}
+
+.skill-icon {
+  width: 34px; height: 34px;
+  border-radius: 8px;
+  background: rgba(15,110,86,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--teal-light);
+  font-size: 15px;
+}
+
+.skill-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.skill-pill {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border-2);
+  color: var(--text-2);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 8px;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+.skill-pill:hover { background: rgba(15,110,86,0.1); border-color: rgba(15,110,86,0.3); color: var(--text); }
+
+/* Langues */
+.lang-list { display: flex; flex-direction: column; gap: 14px; }
+.lang-row { }
+.lang-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+.lang-name { font-size: 14px; color: var(--text); font-weight: 500; }
+.lang-level { font-size: 12px; color: var(--teal-light); font-weight: 600; }
+.lang-bar { height: 4px; background: rgba(255,255,255,0.06); border-radius: 2px; overflow: hidden; }
+.lang-fill { height: 100%; background: linear-gradient(90deg, var(--teal), var(--teal-light)); border-radius: 2px; }
+
+/* ═══════════════════════════════════
+   CONTACT
+═══════════════════════════════════ */
+#contact { background: var(--dark-2); }
+
+.contact-wrap {
+  max-width: 780px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contact-desc {
+  font-size: 17px;
+  color: var(--text-2);
+  line-height: 1.75;
+  margin-bottom: 48px;
+}
+.contact-desc strong { color: var(--text); }
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 44px;
+}
+
+.c-card {
+  background: var(--dark-3);
+  border: 1px solid var(--border-2);
+  border-radius: var(--radius);
+  padding: 24px 16px;
+  text-decoration: none;
+  color: var(--text-2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.c-card:hover { border-color: rgba(15,110,86,0.4); transform: translateY(-3px); box-shadow: var(--shadow-teal); }
+
+.c-icon {
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  background: rgba(15,110,86,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: var(--teal-light);
+}
+
+.c-label { font-size: 13px; font-weight: 600; color: var(--text); }
+.c-value { font-size: 11px; color: var(--muted); }
+
+.contact-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--teal);
+  color: #fff;
+  padding: 17px 42px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 4px 20px rgba(15,110,86,0.35);
+}
+.contact-cta:hover { background: var(--teal-light); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(15,110,86,0.45); }
+
+/* ═══════════════════════════════════
+   FOOTER
+═══════════════════════════════════ */
+footer {
+  background: var(--dark);
+  text-align: center;
+  padding: 32px 6%;
+  border-top: 1px solid var(--border-2);
+  font-size: 13px;
+  color: var(--muted);
+}
+footer span { color: var(--teal-light); }
+
+/* ═══════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════ */
+@media (max-width: 900px) {
+  .hero-inner { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+  .hero-avatar-wrap { display: none; }
+  .hero-tag { margin: 0 auto 28px; }
+  .hero-btns { justify-content: center; }
+  .hero-socials { justify-content: center; }
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .contact-grid { grid-template-columns: repeat(2, 1fr); }
+  .skill-block.wide { grid-column: span 1; }
+  .nav-links { display: none; }
+  section { padding: 72px 5%; }
+}
+
+@media (max-width: 480px) {
+  .contact-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-name { letter-spacing: -1px; }
+}
+
+  </style>
 </head>
 <body>
 
+<!-- ═══ NAV ═══ -->
 <nav>
-  <a href="#hero" class="nav-logo">T.Oubaya</a>
+  <a href="#hero" class="nav-logo">Tawfiq<span>.</span></a>
   <ul class="nav-links">
     <li><a href="#about">À propos</a></li>
     <li><a href="#experience">Expérience</a></li>
     <li><a href="#projets">Projets</a></li>
     <li><a href="#competences">Compétences</a></li>
-    <li><a href="#contact" class="nav-cta">Me contacter</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
   </ul>
 </nav>
 
-
+<!-- ═══ HERO ═══ -->
 <section id="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid">
-
+  <div class="hero-inner">
     <div>
-
+      <div class="hero-tag">
+      </div>
       <h1 class="hero-name">
         Tawfiq<br>
-        <em>Oubaya</em>
+        <span class="highlight">Oubaya</span>
       </h1>
-
-      <p class="hero-subtitle">
-        Étudiant en BUT 2 Informatique · Développement web full-stack,
-        analyse de données et administration système.
+      <p class="hero-role">Étudiant BUT 2 Informatique</p>
+      <p class="hero-desc">
+        Développement web full-stack, analyse de données et administration système.
+        Passionné par les environnements techniques où je peux concevoir et améliorer des solutions concrètes.
       </p>
-
       <div class="hero-btns">
-        <a href="#projets" class="btn-primary">Voir mes projets</a>
-        <a href="#contact" class="btn-ghost">Me contacter</a>
+        <a href="#projets" class="btn-main"><i class="fas fa-eye"></i> Voir mes projets</a>
+        <a href="#contact" class="btn-outline"><i class="fas fa-paper-plane"></i> Me contacter</a>
       </div>
-
       <div class="hero-socials">
-        <a href="https://github.com/Toto15-dot" target="_blank" aria-label="GitHub">
-          <i class="fab fa-github"></i>
-        </a>
-        <a href="https://linkedin.com/in/tawfiq-oubaya" target="_blank" aria-label="LinkedIn">
-          <i class="fab fa-linkedin-in"></i>
-        </a>
-        <a href="mailto:oubayatawfiq@gmail.com" aria-label="Email">
-          <i class="fas fa-envelope"></i>
-        </a>
+        <a href="https://github.com/Toto15-dot" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com/in/tawfiq-oubaya" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="mailto:oubayatawfiq@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        <a href="tel:0759459546" aria-label="Téléphone"><i class="fas fa-phone"></i></a>
       </div>
     </div>
 
-  
-    <div class="hero-avatar">
-      <span class="initials">TO</span>
+    <div class="hero-avatar-wrap">
+      <div class="hero-avatar">TO</div>
+      <div class="float-badge float-badge-1"><i class="fab fa-python"></i> Python</div>
+      <div class="float-badge float-badge-2"><i class="fab fa-react"></i> React JS</div>
+      <div class="float-badge float-badge-3"><i class="fas fa-database"></i> Data Science</div>
     </div>
-
   </div>
 </section>
 
-
-
+<!-- ═══ À PROPOS ═══ -->
 <section id="about">
-  <div class="about-grid">
-
-    <div>
-      <p class="section-label">À propos</p>
-      <h2 class="section-title">Passionné par le code<br>et les données</h2>
-      <div class="section-line"></div>
-
-      <div class="about-text">
-        <p>
-          Étudiant en deuxième année de BUT Informatique à l'IUT de Villetaneuse,
-          je cherche à mettre en pratique mes compétences en
-          <strong>développement web</strong>, <strong>systèmes</strong>
-          et <strong>analyse de données</strong>.
-        </p>
-        <p>
-          J'ai développé des bases solides en Java, Python, C++, SQL et Linux,
-          ainsi qu'en développement web avec HTML, CSS, JavaScript, React JS,
-          Vue JS et Django.
-        </p>
-        <p>
-          Rigoureux, autonome et impliqué, je souhaite intégrer une structure où
-          je pourrai contribuer à des projets concrets et renforcer mes compétences techniques.
-        </p>
-      </div>
-
-      <div class="about-stats">
-        <div class="stat-card">
-          <div class="stat-num">4+</div>
-          <div class="stat-label">Projets réalisés</div>
+  <div class="section-inner">
+    <div class="about-grid">
+      <div>
+        <div class="section-header">
+          <div class="section-eyebrow">À propos</div>
+          <h2 class="section-title">Passionné par le code et les données</h2>
         </div>
-        <div class="stat-card">
-          <div class="stat-num">10+</div>
-          <div class="stat-label">Technologies</div>
+        <div class="about-text">
+          <p>Étudiant en deuxième année de BUT Informatique à l'IUT de Villetaneuse, je cherche à mettre en pratique mes compétences en <strong>développement web</strong>, <strong>systèmes</strong> et <strong>analyse de données</strong>.</p>
+          <p>J'ai développé des bases solides en Java, Python, C++, SQL et Linux, ainsi qu'en développement web avec HTML, CSS, JavaScript, React JS, Vue JS et Django.</p>
+          <p>Rigoureux, autonome et impliqué, je souhaite intégrer une structure où je pourrai contribuer à des projets concrets et renforcer mes compétences techniques.</p>
         </div>
-        <div class="stat-card">
-          <div class="stat-num">4</div>
-          <div class="stat-label">Langues</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">BUT 2</div>
-          <div class="stat-label">Informatique</div>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="about-right">
-
-
-      <div class="info-row">
-        <i class="fas fa-map-marker-alt"></i>
-        <span>Localisation</span>
-        <strong>Les Mureaux (78)</strong>
-      </div>
-      <div class="info-row">
-        <i class="fas fa-phone"></i>
-        <span>Téléphone</span>
-        <strong>07 59 45 95 46</strong>
-      </div>
-      <div class="info-row">
-        <i class="fas fa-envelope"></i>
-        <span>Email</span>
-        <strong>oubayatawfiq@gmail.com</strong>
-      </div>
-      <div class="info-row">
-        <i class="fab fa-github"></i>
-        <span>GitHub</span>
-        <strong>github.com/Toto15-dot</strong>
-      </div>
-      <div class="info-row">
-        <i class="fab fa-linkedin"></i>
-        <span>LinkedIn</span>
-        <strong>tawfiq-oubaya</strong>
-      </div>
-
-
-      <p class="formation-label">Formation</p>
-      <div class="formation-list">
-        <div class="formation-item">
-          <div class="fi-title">BUT 2 Informatique</div>
-          <div class="fi-school">IUT de Villetaneuse – Université Sorbonne Paris Nord</div>
-          <div class="fi-date">09/2025 – En cours</div>
-        </div>
-        <div class="formation-item">
-          <div class="fi-title">BUT 1 Informatique – Ingénierie logicielle</div>
-          <div class="fi-school">École Supérieure de Technologie </div>
-          <div class="fi-date">09/2024 – 06/2025</div>
+        <div class="about-stats">
+          <div class="stat-card"><div class="stat-num">4+</div><div class="stat-label">Projets réalisés</div></div>
+          <div class="stat-card"><div class="stat-num">10+</div><div class="stat-label">Technologies</div></div>
+          <div class="stat-card"><div class="stat-num">4</div><div class="stat-label">Langues parlées</div></div>
+          <div class="stat-card"><div class="stat-num">2</div><div class="stat-label">Stages effectués</div></div>
         </div>
       </div>
 
+      <div class="about-right">
+        <div class="info-card">
+          <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div><div class="info-label">Localisation</div><div class="info-value">Les Mureaux (78)</div></div>
+        </div>
+        <div class="info-card">
+          <div class="info-icon"><i class="fas fa-phone"></i></div>
+          <div><div class="info-label">Téléphone</div><div class="info-value">07 59 45 95 46</div></div>
+        </div>
+        <div class="info-card">
+          <div class="info-icon"><i class="fas fa-envelope"></i></div>
+          <div><div class="info-label">Email</div><div class="info-value">oubayatawfiq@gmail.com</div></div>
+        </div>
+        <div class="info-card">
+          <div class="info-icon"><i class="fab fa-github"></i></div>
+          <div><div class="info-label">GitHub</div><div class="info-value">github.com/Toto15-dot</div></div>
+        </div>
+        <div class="info-card">
+          <div class="info-icon"><i class="fab fa-linkedin"></i></div>
+          <div><div class="info-label">LinkedIn</div><div class="info-value">tawfiq-oubaya</div></div>
+        </div>
+
+        <div class="formation-label">Formation</div>
+        <div class="formation-list">
+          <div class="formation-item">
+            <div class="fi-title">BUT 2 Informatique</div>
+            <div class="fi-school">IUT de Villetaneuse – Univ. Sorbonne Paris Nord</div>
+            <div class="fi-date">09/2025 – En cours</div>
+          </div>
+          <div class="formation-item">
+            <div class="fi-title">BUT 1 Informatique – Ingénierie logicielle</div>
+            <div class="fi-school">École Supérieure de Technologie – Paris</div>
+            <div class="fi-date">09/2024 – 06/2025</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-
+<!-- ═══ EXPÉRIENCE ═══ -->
 <section id="experience">
-  <div class="projets-inner">
-    <p class="section-label">Parcours professionnel</p>
-    <h2 class="section-title">Expérience</h2>
-    <div class="section-line"></div>
-
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-eyebrow">Parcours professionnel</div>
+      <h2 class="section-title">Expérience</h2>
+    </div>
     <div class="timeline">
 
-      <div class="timeline-item current">
-        <div class="timeline-dot current">🤖</div>
-        <div class="timeline-content">
-          <div class="exp-header">
-            <div class="exp-title">Analyste de données – Stage</div>
-            <span class="exp-badge current-badge">En cours</span>
+      <div class="timeline-item active">
+        <div class="t-dot active">🤖</div>
+        <div class="t-card">
+          <div class="t-header">
+            <div class="t-title">Analyste de données – Stage</div>
+            <span class="t-badge live">● En cours</span>
           </div>
-          <div class="exp-company">Semantikmatch · Paris (75008)</div>
-          <div class="exp-date">
-            <i class="fas fa-calendar-alt"></i> Juin 2026 – Août 2026 · 8 semaines
+          <div class="t-company">Semantikmatch · Paris 75008</div>
+          <div class="t-date"><i class="fas fa-calendar-alt"></i> Juin 2026 – Août 2026 · 8 semaines</div>
+          <div class="t-missions">
+            <div class="t-mission">Analyse et sélection des dossiers des candidats au moyen de critères définis par l'utilisateur.</div>
+            <div class="t-mission">Utilisation d'une IA de type LLM pour automatiser le traitement des données.</div>
+            <div class="t-mission">Développement de pipelines de données en Python pour l'extraction et la transformation des informations.</div>
+            <div class="t-mission">Collaboration avec l'équipe Data Science pour améliorer les modèles de sélection.</div>
+            <div class="t-mission">Production de rapports et visualisations pour faciliter la prise de décision.</div>
           </div>
-          <div class="exp-missions">
-            <div class="exp-mission">Analyse et sélection des dossiers des candidats au moyen de critères définis par l'utilisateur.</div>
-            <div class="exp-mission">Utilisation d'une IA de type LLM pour automatiser le traitement des données.</div>
-            <div class="exp-mission">Développement de pipelines de données en Python pour l'extraction et la transformation des informations.</div>
-            <div class="exp-mission">Collaboration avec l'équipe Data Science pour améliorer les modèles de sélection.</div>
-            <div class="exp-mission">Production de rapports et visualisations pour faciliter la prise de décision.</div>
-          </div>
-          <div class="project-tags" style="margin-top:16px;">
-            <span class="tag">Python</span>
-            <span class="tag">LLM</span>
-            <span class="tag">Data Science</span>
-            <span class="tag">Pandas</span>
-            <span class="tag">IA</span>
-            <span class="tag">NLP</span>
+          <div class="t-tags">
+            <span class="t-tag">Python</span><span class="t-tag">LLM</span><span class="t-tag">Data Science</span><span class="t-tag">Pandas</span><span class="t-tag">IA</span><span class="t-tag">NLP</span>
           </div>
         </div>
       </div>
 
       <div class="timeline-item">
-        <div class="timeline-dot">🖥️</div>
-        <div class="timeline-content">
-          <div class="exp-header">
-            <div class="exp-title">Stagiaire Informatique</div>
-            <span class="exp-badge">Stage</span>
+        <div class="t-dot">🖥️</div>
+        <div class="t-card">
+          <div class="t-header">
+            <div class="t-title">Stagiaire Informatique</div>
+            <span class="t-badge">Stage</span>
           </div>
-          <div class="exp-company">Ste-Soge · Les Mureaux (78)</div>
-          <div class="exp-date">
-            <i class="fas fa-calendar-alt"></i> Juin 2025 – Juillet 2025
+          <div class="t-company">Ste-Soge · Les Mureaux (78)</div>
+          <div class="t-date"><i class="fas fa-calendar-alt"></i> Juin 2025 – Juillet 2025</div>
+          <div class="t-missions">
+            <div class="t-mission">Installation et configuration de matériels informatiques : ordinateurs, imprimantes et périphériques.</div>
+            <div class="t-mission">Déploiement de logiciels, outils bureautiques et solutions de sécurité (antivirus, mises à jour).</div>
+            <div class="t-mission">Réalisation de la maintenance corrective des systèmes d'exploitation et des applications.</div>
+            <div class="t-mission">Participation au support technique afin de garantir le bon fonctionnement des postes de travail.</div>
+            <div class="t-mission">Saisie, enregistrement et suivi de données de fabrication dans l'outil informatique interne.</div>
+            <div class="t-mission">Exécution des tâches techniques avec rigueur, autonomie et réactivité.</div>
           </div>
-          <div class="exp-missions">
-            <div class="exp-mission">Installation et configuration de matériels informatiques : ordinateurs, imprimantes et périphériques.</div>
-            <div class="exp-mission">Déploiement de logiciels, outils bureautiques et solutions de sécurité (antivirus, mises à jour).</div>
-            <div class="exp-mission">Réalisation de la maintenance corrective des systèmes d'exploitation et des applications.</div>
-            <div class="exp-mission">Participation au support technique afin de garantir le bon fonctionnement des postes de travail.</div>
-            <div class="exp-mission">Saisie, enregistrement et suivi de données de fabrication dans l'outil informatique interne.</div>
-            <div class="exp-mission">Exécution des tâches techniques avec rigueur, autonomie et réactivité.</div>
-          </div>
-          <div class="project-tags" style="margin-top:16px;">
-            <span class="tag">Maintenance</span>
-            <span class="tag">Support technique</span>
-            <span class="tag">Windows</span>
-            <span class="tag">Réseau</span>
-            <span class="tag">Sécurité</span>
+          <div class="t-tags">
+            <span class="t-tag">Maintenance</span><span class="t-tag">Support technique</span><span class="t-tag">Windows</span><span class="t-tag">Réseau</span><span class="t-tag">Sécurité</span>
           </div>
         </div>
       </div>
@@ -237,94 +1067,54 @@
   </div>
 </section>
 
-
+<!-- ═══ PROJETS ═══ -->
 <section id="projets">
-  <div class="projets-inner">
-    <p class="section-label">Mes réalisations</p>
-    <h2 class="section-title">Projets</h2>
-    <div class="section-line"></div>
-
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-eyebrow">Mes réalisations</div>
+      <h2 class="section-title">Projets</h2>
+    </div>
     <div class="projets-grid">
 
-      <div class="project-card featured">
-        <div class="project-img music">
+      <div class="p-card featured">
+        <div class="p-img music">
           <span>🎵</span>
-          <span class="project-badge">Dev Web</span>
+          <span class="p-badge">Dev Web</span>
         </div>
-        <div class="project-body">
-          <div class="project-type">Développement Web</div>
-          <div class="project-title">Les Gares en Musique</div>
-          <div class="project-desc">
-            Site web dédié à la scène musicale des gares de France.
-            Découvrez les artistes qui se produisent dans les grandes gares françaises,
-            les concerts à venir, les styles musicaux et les lieux emblématiques de la SNCF.
-          </div>
-          <div class="project-tags">
-            <span class="tag">React JS</span>
-            <span class="tag">CSS3</span>
-            <span class="tag">JavaScript</span>
-            <span class="tag">API REST</span>
-            <span class="tag">Responsive</span>
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/Toto15-dot" class="project-link primary" target="_blank">
-              <i class="fab fa-github"></i> GitHub
-            </a>
-            <a href="#" class="project-link">
-              <i class="fas fa-external-link-alt"></i> Démo
-            </a>
+        <div class="p-body">
+          <div class="p-type">Développement Web</div>
+          <div class="p-title">Les Gares en Musique</div>
+          <div class="p-desc">Site web dédié à la scène musicale des gares de France. Découvrez les artistes dans les grandes gares françaises, les concerts à venir et les lieux emblématiques de la SNCF.</div>
+          <div class="p-tags"><span class="p-tag">React JS</span><span class="p-tag">CSS3</span><span class="p-tag">JavaScript</span><span class="p-tag">API REST</span><span class="p-tag">Responsive</span></div>
+          <div class="p-links">
+            <a href="https://github.com/Toto15-dot" class="p-link main" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+            <a href="#" class="p-link"><i class="fas fa-external-link-alt"></i> Démo</a>
           </div>
         </div>
       </div>
 
-      <div class="project-card">
-        <div class="project-img data">
-          <span>📊</span>
-        </div>
-        <div class="project-body">
-          <div class="project-type">Data Science – SAE</div>
-          <div class="project-title">Analyse de données – Python</div>
-          <div class="project-desc">
-            Exploration et nettoyage d'un jeu de données réel, identification de
-            relations significatives, visualisations graphiques pour analyser les
-            tendances et production d'une analyse argumentée.
-          </div>
-          <div class="project-tags">
-            <span class="tag">Python</span>
-            <span class="tag">Pandas</span>
-            <span class="tag">Matplotlib</span>
-            <span class="tag">Data Science</span>
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/Toto15-dot" class="project-link primary" target="_blank">
-              <i class="fab fa-github"></i> GitHub
-            </a>
+      <div class="p-card">
+        <div class="p-img data"><span>📊</span></div>
+        <div class="p-body">
+          <div class="p-type">Data Science – SAE</div>
+          <div class="p-title">Analyse de données – Python</div>
+          <div class="p-desc">Exploration et nettoyage d'un jeu de données réel, identification de relations significatives, visualisations graphiques et production d'une analyse argumentée.</div>
+          <div class="p-tags"><span class="p-tag">Python</span><span class="p-tag">Pandas</span><span class="p-tag">Matplotlib</span><span class="p-tag">Data Science</span></div>
+          <div class="p-links">
+            <a href="https://github.com/Toto15-dot" class="p-link main" target="_blank"><i class="fab fa-github"></i> GitHub</a>
           </div>
         </div>
       </div>
 
-      <div class="project-card">
-        <div class="project-img linux">
-          <span>🐧</span>
-        </div>
-        <div class="project-body">
-          <div class="project-type">Système – SAE</div>
-          <div class="project-title">Administration système Linux</div>
-          <div class="project-desc">
-            Déploiement et configuration d'un environnement système Linux complet.
-            Gestion des droits utilisateurs, sécurité des accès, bonnes pratiques
-            de maintenance et optimisation des ressources.
-          </div>
-          <div class="project-tags">
-            <span class="tag">Linux</span>
-            <span class="tag">Bash</span>
-            <span class="tag">Sécurité</span>
-            <span class="tag">Administration</span>
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/Toto15-dot" class="project-link primary" target="_blank">
-              <i class="fab fa-github"></i> GitHub
-            </a>
+      <div class="p-card">
+        <div class="p-img linux"><span>🐧</span></div>
+        <div class="p-body">
+          <div class="p-type">Système – SAE</div>
+          <div class="p-title">Administration système Linux</div>
+          <div class="p-desc">Déploiement et configuration d'un environnement Linux complet. Gestion des droits utilisateurs, sécurité des accès et optimisation des ressources.</div>
+          <div class="p-tags"><span class="p-tag">Linux</span><span class="p-tag">Bash</span><span class="p-tag">Sécurité</span><span class="p-tag">Administration</span></div>
+          <div class="p-links">
+            <a href="https://github.com/Toto15-dot" class="p-link main" target="_blank"><i class="fab fa-github"></i> GitHub</a>
           </div>
         </div>
       </div>
@@ -333,108 +1123,42 @@
   </div>
 </section>
 
-
-
+<!-- ═══ COMPÉTENCES ═══ -->
 <section id="competences">
-  <div class="competences-wrap">
-    <p class="section-label">Savoir-faire</p>
-    <h2 class="section-title">Compétences</h2>
-    <div class="section-line"></div>
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-eyebrow">Savoir-faire</div>
+      <h2 class="section-title">Compétences</h2>
+    </div>
+    <div class="skills-grid">
 
-    <div class="skill-categories">
-
-      <div class="skill-cat">
-        <div class="skill-cat-title">
-          <i class="fas fa-code"></i> Langages
-        </div>
-        <div class="skill-list">
-          <span class="skill-pill">Python</span>
-          <span class="skill-pill">Java</span>
-          <span class="skill-pill">C++</span>
-          <span class="skill-pill">JavaScript</span>
-          <span class="skill-pill">HTML5</span>
-          <span class="skill-pill">CSS3</span>
-          <span class="skill-pill">SQL</span>
-          <span class="skill-pill">R</span>
-          <span class="skill-pill">PHP</span>
-        </div>
+      <div class="skill-block">
+        <div class="skill-block-title"><div class="skill-icon"><i class="fas fa-code"></i></div> Langages</div>
+        <div class="skill-pills"><span class="skill-pill">Python</span><span class="skill-pill">Java</span><span class="skill-pill">C++</span><span class="skill-pill">JavaScript</span><span class="skill-pill">HTML5</span><span class="skill-pill">CSS3</span><span class="skill-pill">SQL</span><span class="skill-pill">R</span><span class="skill-pill">PHP</span></div>
       </div>
 
-     
-      <div class="skill-cat">
-        <div class="skill-cat-title">
-          <i class="fas fa-layer-group"></i> Frameworks & libs
-        </div>
-        <div class="skill-list">
-          <span class="skill-pill">React JS</span>
-          <span class="skill-pill">Vue JS</span>
-          <span class="skill-pill">Django</span>
-          <span class="skill-pill">Pandas</span>
-          <span class="skill-pill">Matplotlib</span>
-          <span class="skill-pill">Power BI</span>
-        </div>
+      <div class="skill-block">
+        <div class="skill-block-title"><div class="skill-icon"><i class="fas fa-layer-group"></i></div> Frameworks & libs</div>
+        <div class="skill-pills"><span class="skill-pill">React JS</span><span class="skill-pill">Vue JS</span><span class="skill-pill">Django</span><span class="skill-pill">Pandas</span><span class="skill-pill">Matplotlib</span><span class="skill-pill">Power BI</span></div>
       </div>
 
-     
-      <div class="skill-cat">
-        <div class="skill-cat-title">
-          <i class="fas fa-database"></i> Base de données
-        </div>
-        <div class="skill-list">
-          <span class="skill-pill">MySQL</span>
-          <span class="skill-pill">NoSQL</span>
-          <span class="skill-pill">RStudio</span>
-          <span class="skill-pill">Excel</span>
-        </div>
+      <div class="skill-block">
+        <div class="skill-block-title"><div class="skill-icon"><i class="fas fa-database"></i></div> Bases de données</div>
+        <div class="skill-pills"><span class="skill-pill">MySQL</span><span class="skill-pill">NoSQL</span><span class="skill-pill">RStudio</span><span class="skill-pill">Excel</span></div>
       </div>
 
-      <div class="skill-cat">
-        <div class="skill-cat-title">
-          <i class="fas fa-tools"></i> Outils & systèmes
-        </div>
-        <div class="skill-list">
-          <span class="skill-pill">Git</span>
-          <span class="skill-pill">GitHub</span>
-          <span class="skill-pill">VS Code</span>
-          <span class="skill-pill">Linux</span>
-          <span class="skill-pill">Cybersécurité</span>
-        </div>
+      <div class="skill-block">
+        <div class="skill-block-title"><div class="skill-icon"><i class="fas fa-tools"></i></div> Outils & systèmes</div>
+        <div class="skill-pills"><span class="skill-pill">Git</span><span class="skill-pill">GitHub</span><span class="skill-pill">VS Code</span><span class="skill-pill">Linux</span><span class="skill-pill">Cybersécurité</span></div>
       </div>
 
-  
-      <div class="skill-cat wide">
-        <div class="skill-cat-title">
-          <i class="fas fa-globe"></i> Langues
-        </div>
+      <div class="skill-block wide">
+        <div class="skill-block-title"><div class="skill-icon"><i class="fas fa-globe"></i></div> Langues</div>
         <div class="lang-list">
-          <div>
-            <div class="lang-item">
-              <span>Français</span>
-              <span class="lang-level">Bilingue</span>
-            </div>
-            <div class="lang-bar"><div class="lang-bar-fill" style="width: 100%"></div></div>
-          </div>
-          <div>
-            <div class="lang-item">
-              <span>Arabe</span>
-              <span class="lang-level">Bilingue</span>
-            </div>
-            <div class="lang-bar"><div class="lang-bar-fill" style="width: 100%"></div></div>
-          </div>
-          <div>
-            <div class="lang-item">
-              <span>Anglais</span>
-              <span class="lang-level">Courant</span>
-            </div>
-            <div class="lang-bar"><div class="lang-bar-fill" style="width: 75%"></div></div>
-          </div>
-          <div>
-            <div class="lang-item">
-              <span>Espagnol</span>
-              <span class="lang-level">Intermédiaire</span>
-            </div>
-            <div class="lang-bar"><div class="lang-bar-fill" style="width: 45%"></div></div>
-          </div>
+          <div class="lang-row"><div class="lang-top"><span class="lang-name">Français</span><span class="lang-level">Bilingue</span></div><div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div></div>
+          <div class="lang-row"><div class="lang-top"><span class="lang-name">Arabe</span><span class="lang-level">Bilingue</span></div><div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div></div>
+          <div class="lang-row"><div class="lang-top"><span class="lang-name">Anglais</span><span class="lang-level">Courant</span></div><div class="lang-bar"><div class="lang-fill" style="width:75%"></div></div></div>
+          <div class="lang-row"><div class="lang-top"><span class="lang-name">Espagnol</span><span class="lang-level">Intermédiaire</span></div><div class="lang-bar"><div class="lang-fill" style="width:45%"></div></div></div>
         </div>
       </div>
 
@@ -442,46 +1166,44 @@
   </div>
 </section>
 
-
-
+<!-- ═══ CONTACT ═══ -->
 <section id="contact">
-  <div class="contact-wrap">
-    <h2 class="section-title">Me contacter</h2>
-    <div class="section-line" style="margin: 0 auto 40px;"></div>
-
-    <div class="contact-cards">
-      <a href="mailto:oubayatawfiq@gmail.com" class="contact-card">
-        <i class="fas fa-envelope"></i>
-        <strong>Email</strong>
-        <span>oubayatawfiq@gmail.com</span>
-      </a>
-      <a href="https://linkedin.com/in/tawfiq-oubaya" target="_blank" class="contact-card">
-        <i class="fab fa-linkedin-in"></i>
-        <strong>LinkedIn</strong>
-        <span>tawfiq-oubaya</span>
-      </a>
-      <a href="https://github.com/Toto15-dot" target="_blank" class="contact-card">
-        <i class="fab fa-github"></i>
-        <strong>GitHub</strong>
-        <span>Toto15-dot</span>
-      </a>
-      <a href="tel:0759459546" class="contact-card">
-        <i class="fas fa-phone"></i>
-        <strong>Téléphone</strong>
-        <span>07 59 45 95 46</span>
+  <div class="section-inner">
+    <div class="section-header" style="text-align:center;">
+      <div class="section-eyebrow" style="justify-content:center;">Contact</div>
+      <h2 class="section-title">Travaillons ensemble</h2>
+    </div>
+    <div class="contact-wrap">
+        <a href="mailto:oubayatawfiq@gmail.com" class="c-card">
+          <div class="c-icon"><i class="fas fa-envelope"></i></div>
+          <div class="c-label">Email</div>
+          <div class="c-value">oubayatawfiq@gmail.com</div>
+        </a>
+        <a href="https://linkedin.com/in/tawfiq-oubaya" target="_blank" class="c-card">
+          <div class="c-icon"><i class="fab fa-linkedin-in"></i></div>
+          <div class="c-label">LinkedIn</div>
+          <div class="c-value">tawfiq-oubaya</div>
+        </a>
+        <a href="https://github.com/Toto15-dot" target="_blank" class="c-card">
+          <div class="c-icon"><i class="fab fa-github"></i></div>
+          <div class="c-label">GitHub</div>
+          <div class="c-value">Toto15-dot</div>
+        </a>
+        <a href="tel:0759459546" class="c-card">
+          <div class="c-icon"><i class="fas fa-phone"></i></div>
+          <div class="c-label">Téléphone</div>
+          <div class="c-value">07 59 45 95 46</div>
+        </a>
+      </div>
+      <a href="mailto:oubayatawfiq@gmail.com" class="contact-cta">
+        <i class="fas fa-paper-plane"></i> Envoyer un email
       </a>
     </div>
-
-    <a href="mailto:oubayatawfiq@gmail.com" class="contact-email-btn">
-      <i class="fas fa-paper-plane"></i>
-      Envoyer un email
-    </a>
   </div>
 </section>
-
 
 <footer>
-  <p>Tawfiq Oubaya &nbsp;·&nbsp; 2026</p>
+  <p>Conçu et développé par <span>Tawfiq Oubaya</span> &nbsp;·&nbsp; 2026</p>
 </footer>
 
 </body>
