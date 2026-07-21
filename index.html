@@ -895,6 +895,76 @@ footer span { color: var(--teal-light); }
   .hero-name { letter-spacing: -1px; }
 }
 
+/* ═══════════════════════════════════
+   CV (AJOUT)
+═══════════════════════════════════ */
+#cv { background: var(--dark); }
+
+.cv-wrap {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.cv-frame-box {
+  background: var(--dark-3);
+  border: 1px solid var(--border-2);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.cv-frame-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: var(--mid);
+  border-bottom: 1px solid var(--border-2);
+}
+.cv-frame-bar .dot { width: 9px; height: 9px; border-radius: 50%; }
+.cv-frame-bar .dot.r { background: #ff5f56; }
+.cv-frame-bar .dot.y { background: #ffbd2e; }
+.cv-frame-bar .dot.g { background: #27c93f; }
+.cv-frame-bar span { margin-left: 8px; font-size: 12px; color: var(--muted); }
+
+.cv-frame {
+  width: 100%;
+  height: 560px;
+  border: none;
+  display: block;
+  background: #fff;
+}
+
+.cv-side { display: flex; flex-direction: column; gap: 18px; }
+.cv-side p { color: var(--text-2); font-size: 15px; line-height: 1.75; }
+.cv-side strong { color: var(--text); }
+
+.cv-actions { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+
+.cv-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 26px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s, border-color 0.2s, color 0.2s;
+}
+.cv-btn.primary { background: var(--teal); color: #fff; }
+.cv-btn.primary:hover { background: var(--teal-light); transform: translateY(-2px); box-shadow: var(--shadow-teal); }
+.cv-btn.secondary { border: 1px solid var(--border-2); background: rgba(255,255,255,0.03); color: var(--text-2); }
+.cv-btn.secondary:hover { border-color: var(--teal); color: var(--text); transform: translateY(-2px); }
+
+@media (max-width: 900px) {
+  .cv-wrap { grid-template-columns: 1fr; }
+  .cv-frame { height: 420px; }
+}
+
   </style>
 </head>
 <body>
@@ -907,6 +977,7 @@ footer span { color: var(--teal-light); }
     <li><a href="#experience">Expérience</a></li>
     <li><a href="#projets">Projets</a></li>
     <li><a href="#competences">Compétences</a></li>
+    <li><a href="#cv">CV</a></li>
     <li><a href="#contact" class="nav-cta">Contact</a></li>
   </ul>
 </nav>
@@ -1164,6 +1235,39 @@ footer span { color: var(--teal-light); }
         </div>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CV (AJOUT) ═══ -->
+<section id="cv">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-eyebrow">Document</div>
+      <h2 class="section-title">Mon CV</h2>
+    </div>
+
+    <div class="cv-wrap">
+      <div class="cv-frame-box">
+        <div class="cv-frame-bar">
+          <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+          <span>CV_Tawfiq_Oubaya.pdf</span>
+        </div>
+        <iframe class="cv-frame" src="CV_Tawfiq_Oubaya.pdf" title="CV de Tawfiq Oubaya"></iframe>
+      </div>
+
+      <div class="cv-side">
+        <p>Vous pouvez consulter mon CV directement ci-contre, ou le télécharger pour le garder de votre côté.</p>
+        <p><strong>À jour</strong> avec mes dernières expériences, dont mon stage chez SemantikMatch.</p>
+        <div class="cv-actions">
+          <a href="CV_Tawfiq_Oubaya.pdf" download class="cv-btn primary">
+            <i class="fas fa-download"></i> Télécharger le CV
+          </a>
+          <a href="CV_Tawfiq_Oubaya.pdf" target="_blank" class="cv-btn secondary">
+            <i class="fas fa-external-link-alt"></i> Ouvrir dans un nouvel onglet
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
