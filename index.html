@@ -41,16 +41,12 @@ body {
   overflow-x: hidden;
 }
 
-/* ═══════════════════════════════════
-   SCROLLBAR
-═══════════════════════════════════ */
+
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--dark); }
 ::-webkit-scrollbar-thumb { background: var(--teal); border-radius: 2px; }
 
-/* ═══════════════════════════════════
-   NAV
-═══════════════════════════════════ */
+
 nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -119,9 +115,7 @@ nav {
 .nav-cta::after { display: none !important; }
 .nav-cta:hover { background: var(--teal-light) !important; box-shadow: var(--shadow-teal) !important; }
 
-/* ═══════════════════════════════════
-   HERO
-═══════════════════════════════════ */
+
 #hero {
   min-height: 100vh;
   display: flex;
@@ -131,7 +125,7 @@ nav {
   overflow: hidden;
 }
 
-/* Grille de points en fond */
+
 #hero::before {
   content: '';
   position: absolute;
@@ -141,7 +135,7 @@ nav {
   pointer-events: none;
 }
 
-/* Dégradé radial */
+
 #hero::after {
   content: '';
   position: absolute;
@@ -324,7 +318,7 @@ nav {
   object-fit: cover;
 }
 
-/* Badges flottants */
+
 .float-badge {
   position: absolute;
   background: var(--mid);
@@ -346,9 +340,7 @@ nav {
 .float-badge-2 { bottom: 50px; left: -30px; }
 .float-badge-3 { bottom: -10px; right: 10px; }
 
-/* ═══════════════════════════════════
-   SECTIONS COMMUNES
-═══════════════════════════════════ */
+
 section { padding: 100px 6%; }
 
 .section-inner {
@@ -390,9 +382,7 @@ section { padding: 100px 6%; }
   letter-spacing: -1px;
 }
 
-/* ═══════════════════════════════════
-   À PROPOS
-═══════════════════════════════════ */
+
 #about { background: var(--dark-2); }
 
 .about-grid {
@@ -488,9 +478,7 @@ section { padding: 100px 6%; }
 .fi-date { font-size: 12px; color: var(--muted); }
 .formation-list { display: flex; flex-direction: column; gap: 12px; }
 
-/* ═══════════════════════════════════
-   EXPÉRIENCE
-═══════════════════════════════════ */
+
 #experience { background: var(--dark); }
 
 .timeline {
@@ -625,9 +613,7 @@ section { padding: 100px 6%; }
   border-radius: 20px;
 }
 
-/* ═══════════════════════════════════
-   PROJETS
-═══════════════════════════════════ */
+
 #projets { background: var(--dark-2); }
 
 .projets-grid {
@@ -724,9 +710,7 @@ section { padding: 100px 6%; }
 }
 .p-link.main:hover { background: var(--teal-light); border-color: var(--teal-light); color: #fff; }
 
-/* ═══════════════════════════════════
-   COMPÉTENCES
-═══════════════════════════════════ */
+
 #competences { background: var(--dark); }
 
 .skills-grid {
@@ -781,7 +765,6 @@ section { padding: 100px 6%; }
 }
 .skill-pill:hover { background: rgba(15,110,86,0.1); border-color: rgba(15,110,86,0.3); color: var(--text); }
 
-/* Langues */
 .lang-list { display: flex; flex-direction: column; gap: 14px; }
 .lang-row { }
 .lang-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
@@ -790,9 +773,7 @@ section { padding: 100px 6%; }
 .lang-bar { height: 4px; background: rgba(255,255,255,0.06); border-radius: 2px; overflow: hidden; }
 .lang-fill { height: 100%; background: linear-gradient(90deg, var(--teal), var(--teal-light)); border-radius: 2px; }
 
-/* ═══════════════════════════════════
-   CONTACT
-═══════════════════════════════════ */
+
 #contact { background: var(--dark-2); }
 
 .contact-wrap {
@@ -861,9 +842,7 @@ section { padding: 100px 6%; }
 }
 .contact-cta:hover { background: var(--teal-light); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(15,110,86,0.45); }
 
-/* ═══════════════════════════════════
-   FOOTER
-═══════════════════════════════════ */
+
 footer {
   background: var(--dark);
   text-align: center;
@@ -874,9 +853,7 @@ footer {
 }
 footer span { color: var(--teal-light); }
 
-/* ═══════════════════════════════════
-   RESPONSIVE
-═══════════════════════════════════ */
+
 @media (max-width: 900px) {
   .hero-inner { grid-template-columns: 1fr; text-align: center; gap: 40px; }
   .hero-avatar-wrap { display: none; }
@@ -895,9 +872,7 @@ footer span { color: var(--teal-light); }
   .hero-name { letter-spacing: -1px; }
 }
 
-/* ═══════════════════════════════════
-   CV (AJOUT)
-═══════════════════════════════════ */
+
 #cv { background: var(--dark); }
 
 .cv-wrap {
@@ -969,7 +944,7 @@ footer span { color: var(--teal-light); }
 </head>
 <body>
 
-<!-- ═══ NAV ═══ -->
+
 <nav>
   <a href="#hero" class="nav-logo">Tawfiq<span>.</span></a>
   <ul class="nav-links">
@@ -982,7 +957,7 @@ footer span { color: var(--teal-light); }
   </ul>
 </nav>
 
-<!-- ═══ HERO ═══ -->
+
 <section id="hero">
   <div class="hero-inner">
     <div>
@@ -1020,7 +995,7 @@ footer span { color: var(--teal-light); }
   </div>
 </section>
 
-<!-- ═══ À PROPOS ═══ -->
+
 <section id="about">
   <div class="section-inner">
     <div class="about-grid">
@@ -1082,7 +1057,6 @@ footer span { color: var(--teal-light); }
   </div>
 </section>
 
-<!-- ═══ EXPÉRIENCE ═══ -->
 <section id="experience">
   <div class="section-inner">
     <div class="section-header">
@@ -1140,7 +1114,7 @@ footer span { color: var(--teal-light); }
   </div>
 </section>
 
-<!-- ═══ PROJETS ═══ -->
+
 <section id="projets">
   <div class="section-inner">
     <div class="section-header">
@@ -1196,7 +1170,7 @@ footer span { color: var(--teal-light); }
   </div>
 </section>
 
-<!-- ═══ COMPÉTENCES ═══ -->
+
 <section id="competences">
   <div class="section-inner">
     <div class="section-header">
@@ -1239,7 +1213,7 @@ footer span { color: var(--teal-light); }
   </div>
 </section>
 
-<!-- ═══ CV (AJOUT) ═══ -->
+
 <section id="cv">
   <div class="section-inner">
     <div class="section-header">
@@ -1272,7 +1246,7 @@ footer span { color: var(--teal-light); }
   </div>
 </section>
 
-<!-- ═══ CONTACT ═══ -->
+
 <section id="contact">
   <div class="section-inner">
     <div class="section-header" style="text-align:center;">
